@@ -3,10 +3,10 @@ namespace RentCars_Back.Repository
 {
     public interface IDriveRepository
     {
-        Task<IEnumerable<DriveResponse>> BuscaMotoristasAsync();
-        Task<DriveResponse> BuscaMotoristaAsync(int id);
-        Task<bool> AdicionarAsync(DriveRequest request);
-        Task<bool> AtualizarAsync(DriveRequest request, int id);
+        Task<IEnumerable<DriverResponse>> BuscaMotoristasAsync();
+        Task<DriverResponse> BuscaMotoristaAsync(int id);
+        Task<bool> AdicionarAsync(DriverRequest request);
+        Task<bool> AtualizarAsync(DriverRequest request, int id);
         Task<bool> DeletarAsync(int id);
     }
 }

@@ -14,27 +14,41 @@ namespace RentCars_Back.Repository
             _configuration = configuration;
             connectionString = _configuration.GetConnectionString("SqlConnection");
         }
-        public async Task<IEnumerable<DriveResponse>> BuscaMotoristasAsync()
+        public async Task<IEnumerable<DriverResponse>> BuscaMotoristasAsync()
         {
             string sql = @"SELECT *from drivers";
-            using (var con = new NpgsqlConnection(connectionString))
-            {
-                return await con.QueryAsync<DriveResponse>(sql);
 
-            }
+            using var con = new NpgsqlConnection(connectionString);
+            return await con.QueryAsync<DriverResponse>(sql);
+
         }
 
-        public Task<DriveResponse> BuscaMotoristaAsync(int id)
+        public async Task<DriverResponse> BuscaMotoristaAsync(int id)
         {
-            throw new NotImplementedException();
+            string sql = @"SELECT
+                     f.id AS Id,
+                     f.name AS Name,
+                     f.age AS Age,
+                     f.address AS Address,
+                     f.sexo AS Sexo,
+                     f.city AS City
+                FROM drivers f
+                WHERE f.id = @Id;";
+
+            using var con = new NpgsqlConnection(connectionString);
+            return await con.QueryFirstOrDefaultAsync<DriverResponse>(sql, new { Id = id });
         }
 
-        public Task<bool> AdicionarAsync(DriveRequest request)
+        public async Task<bool> AdicionarAsync(DriverRequest request)
         {
-            throw new NotImplementedException();
+            string sql = @"INSERT INTO drivers (name, age, address, sexo, city)
+                             VALUES (@Name, @Age, @Address, @sexo, @City)";
+
+            using var con = new NpgsqlConnection(connectionString);
+            return await con.ExecuteAsync(sql, request) > 0;
         }
 
-        public Task<bool> AtualizarAsync(DriveRequest request, int id)
+        public Task<bool> AtualizarAsync(DriverRequest request, int id)
         {
             throw new NotImplementedException();
         }
