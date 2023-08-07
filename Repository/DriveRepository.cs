@@ -48,17 +48,39 @@ namespace RentCars_Back.Repository
             return await con.ExecuteAsync(sql, request) > 0;
         }
 
-        public Task<bool> AtualizarAsync(DriverRequest request, int id)
+        public async Task<bool> AtualizarAsync(DriverRequest request, int id)
         {
-            throw new NotImplementedException();
+            string sql = @"UPDATE drivers SET 
+                      name = @Name,
+                      age = @Age,
+                      address = @Address,
+                      sexo = @Sexo,
+                      city = @City
+                    WHERE id = @Id";
+
+            var parametros = new DynamicParameters();
+            parametros.Add("Name", request.Name);
+            parametros.Add("Age", request.Age);
+            parametros.Add("Address", request.Address);
+            parametros.Add("Sexo", request.Sexo);
+            parametros.Add("City", request.City);
+            parametros.Add("Id", id);
+
+
+            using var con = new NpgsqlConnection(connectionString);
+            return await con.ExecuteAsync(sql, parametros) > 0;
         }
 
 
 
 
-        public Task<bool> DeletarAsync(int id)
+        public async Task<bool> DeletarAsync(int id)
         {
-            throw new NotImplementedException();
+            string sql = @"DELETE FROM drivers                    
+                              WHERE id = @Id";
+
+            using var con = new NpgsqlConnection(connectionString);
+            return await con.ExecuteAsync(sql, new { Id = id }) > 0;
         }
     }
 }

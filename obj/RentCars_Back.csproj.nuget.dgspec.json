@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\MeusProgramas\\C#\\RentCars_Back\\RentCars_Back.csproj": {}
+    "C:\\ProjectRentCar\\RentCars_Back\\RentCars_Back.csproj": {}
   },
   "projects": {
-    "C:\\MeusProgramas\\C#\\RentCars_Back\\RentCars_Back.csproj": {
+    "C:\\ProjectRentCar\\RentCars_Back\\RentCars_Back.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\MeusProgramas\\C#\\RentCars_Back\\RentCars_Back.csproj",
+        "projectUniqueName": "C:\\ProjectRentCar\\RentCars_Back\\RentCars_Back.csproj",
         "projectName": "RentCars_Back",
-        "projectPath": "C:\\MeusProgramas\\C#\\RentCars_Back\\RentCars_Back.csproj",
+        "projectPath": "C:\\ProjectRentCar\\RentCars_Back\\RentCars_Back.csproj",
         "packagesPath": "C:\\Users\\mi212\\.nuget\\packages\\",
-        "outputPath": "C:\\MeusProgramas\\C#\\RentCars_Back\\obj\\",
+        "outputPath": "C:\\ProjectRentCar\\RentCars_Back\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mi212\\AppData\\Roaming\\NuGet\\NuGet.Config",
