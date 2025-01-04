@@ -54,10 +54,15 @@ public class DriversController : ControllerBase
         if (driver == null) return NotFound("Motorista não existe");
 
         if (string.IsNullOrEmpty(request.Name)) request.Name = driver.Name;
-        if (request.Age <= 0) request.Age = driver.Age;
-        if (string.IsNullOrEmpty(request.Address)) request.Address = driver.Address;
-        if (string.IsNullOrEmpty(request.Sexo)) request.Sexo = driver.Sexo;
+        if (string.IsNullOrEmpty(request.PaymentDay)) request.PaymentDay = driver.PaymentDay;
+        if (string.IsNullOrEmpty(request.Location)) request.Location = driver.Location;
+        if (string.IsNullOrEmpty(request.Location)) request.Location = driver.Location;
+        if (string.IsNullOrEmpty(request.Cep)) request.Cep = driver.Cep;  
         if (string.IsNullOrEmpty(request.City)) request.City = driver.City;
+        if (string.IsNullOrEmpty(request.District)) request.District = driver.District;
+        if (string.IsNullOrEmpty(request.Uf)) request.Uf = driver.Uf;
+        if (string.IsNullOrEmpty(request.Street)) request.Street = driver.Street;
+        if (request.Number <= 0) request.Number = driver.Number;
 
         var atualizado = await _repository.AtualizarAsync(request, id);
         return atualizado
